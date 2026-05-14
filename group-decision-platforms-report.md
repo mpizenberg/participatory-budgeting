@@ -16,30 +16,30 @@ The fields converge because PB, at scale, *requires* group-decision infrastructu
 
 ### Phase I — Origins in Porto Alegre (1989–2001)
 
-PB was invented in **Porto Alegre, Brazil, in 1989** when newly elected Workers' Party (PT) mayor Olívio Dutra institutionalized neighborhood assemblies that decided municipal investment priorities ([Wikipedia](https://en.wikipedia.org/wiki/Participatory_budgeting), [Participedia](https://participedia.net/case/5524)). The mechanism combined two PT traditions: base-community organizing inherited from liberation theology, and a "popular administration" ethos. Participation rose from <1,000 people in 1990 to ~40,000 by 1999; sewer connections went from 75% to 98% of households over a decade.
+PB was invented in **Porto Alegre, Brazil, in 1989** when newly elected Workers' Party (PT) mayor Olívio Dutra institutionalized neighborhood assemblies that decided municipal investment priorities ([Wikipedia][wiki-pb], [Participedia][participedia-porto]). The mechanism combined two PT traditions: base-community organizing inherited from liberation theology, and a "popular administration" ethos. Participation rose from <1,000 people in 1990 to ~40,000 by 1999; sewer connections went from 75% to 98% of households over a decade.
 
 By 2001 over 100 Brazilian cities had adopted PB. The 2001 World Social Forum in Porto Alegre turned the city into a global symbol of the "another world is possible" movement and exported the model abroad.
 
 ### Phase II — Internationalization and codification (2001–2011)
 
-PB spread first across Latin America (Peru made it mandatory nationwide in 2003), then to Europe via Spain (Córdoba, Sevilla), Italy, France, Germany, and Portugal. **Lisbon (2008)** became the first European capital to adopt PB ([openedition](https://journals.openedition.org/factsreports/3363)). The World Bank, UN-Habitat, and OECD endorsed it as "best practice."
+PB spread first across Latin America (Peru made it mandatory nationwide in 2003), then to Europe via Spain (Córdoba, Sevilla), Italy, France, Germany, and Portugal. **Lisbon (2008)** became the first European capital to adopt PB ([openedition][openedition-lisbon]). The World Bank, UN-Habitat, and OECD endorsed it as "best practice."
 
-During this period PB was still mostly face-to-face. The software layer was thin — spreadsheets, basic CMS, paper ballots. The intellectual framing came from authors like **Brian Wampler, Yves Sintomer, Giovanni Allegretti, Boaventura de Sousa Santos** ([PSU Press — Wampler](https://www.psupress.org/books/titles/978-0-271-03252-8.html)).
+During this period PB was still mostly face-to-face. The software layer was thin — spreadsheets, basic CMS, paper ballots. The intellectual framing came from authors like **Brian Wampler, Yves Sintomer, Giovanni Allegretti, Boaventura de Sousa Santos** ([PSU Press — Wampler][psupress-wampler]).
 
 ### Phase III — Digital turn, post-Occupy (2011–2015)
 
 Three things happened almost simultaneously:
 
-- **Occupy Wall Street (2011)** popularized the idea that consensus-style decision-making at scale needed software. Activists from **Occupy Wellington** and the **Enspiral** cooperative network founded **Loomio** in 2012 in New Zealand — the first widely adopted general-purpose online group-decision tool, built as a worker cooperative ([Loomio history](https://www.loomio.coop/history.html), [openDemocracy](https://www.opendemocracy.net/en/from-occupy-to-online-democracy-loomio-story/)).
+- **Occupy Wall Street (2011)** popularized the idea that consensus-style decision-making at scale needed software. Activists from **Occupy Wellington** and the **Enspiral** cooperative network founded **Loomio** in 2012 in New Zealand — the first widely adopted general-purpose online group-decision tool, built as a worker cooperative ([Loomio history][loomio-history], [openDemocracy][opendemocracy-loomio]).
 - **Spain's 15-M / Indignados movement (2011)** demanded "real democracy now." Its activists later took municipal power in 2015.
-- **Taiwan's g0v (gov-zero) civic-hacker collective** formed in 2012; after the **Sunflower Movement (2014)** it launched **vTaiwan**, integrating **Polis** (built by Colin Megill, Christopher Small, Mike Bjorkegren) to surface "rough consensus" via PCA-based opinion mapping ([compdemocracy — vTaiwan case study](https://compdemocracy.org/case-studies/2014-vtaiwan/)). Audrey Tang later institutionalized this work as Taiwan's first Digital Minister.
+- **Taiwan's g0v (gov-zero) civic-hacker collective** formed in 2012; after the **Sunflower Movement (2014)** it launched **vTaiwan**, integrating **Polis** (built by Colin Megill, Christopher Small, Mike Bjorkegren) to surface "rough consensus" via PCA-based opinion mapping ([compdemocracy — vTaiwan case study][compdemocracy-vtaiwan]). Audrey Tang later institutionalized this work as Taiwan's first Digital Minister.
 
 ### Phase IV — The Spanish municipal platforms (2015–2017)
 
 This is the inflection point that defines today's open-source landscape.
 
-- **Madrid**: Ahora Madrid (the citizens' platform that won the 2015 election) launched **Decide Madrid** in September 2015. Its codebase, **CONSUL**, was released as free software ([Democracy Technologies](https://democracy-technologies.org/participation/decide-madrid-and-consul/)).
-- **Barcelona**: Barcelona en Comú (Ada Colau's coalition) launched **decidim.barcelona** on 31 January 2016, initially as a fork of CONSUL. In 2017 the team **rewrote it from scratch** in Ruby on Rails as **Decidim** — modular, federated, with a strong "democratic guarantees" social contract that every install must honor ([Computational Culture](http://computationalculture.net/the-decidim-soft-infrastructure/)).
+- **Madrid**: Ahora Madrid (the citizens' platform that won the 2015 election) launched **Decide Madrid** in September 2015. Its codebase, **CONSUL**, was released as free software ([Democracy Technologies][democracy-tech-consul]).
+- **Barcelona**: Barcelona en Comú (Ada Colau's coalition) launched **decidim.barcelona** on 31 January 2016, initially as a fork of CONSUL. In 2017 the team **rewrote it from scratch** in Ruby on Rails as **Decidim** — modular, federated, with a strong "democratic guarantees" social contract that every install must honor ([Computational Culture][comp-culture-decidim]).
 
 Both platforms supported the full PB cycle (proposal → debate → vetting → vote → monitoring). By the mid-2020s CONSUL was deployed in 130+ institutions across 33 countries; Decidim in 400+ instances including national governments (France's *Make.org* partnerships, Mexico City, the European Commission's *Conference on the Future of Europe*).
 
@@ -47,9 +47,9 @@ Both platforms supported the full PB cycle (proposal → debate → vetting → 
 
 Several trends shape the current era:
 
-- **Hyperscale PB**. **Paris** raised its PB envelope to **€100 million/year** (2014→), and **Madrid** matched it — making them the largest sustained PB processes ever ([EURAC blog](https://www.eurac.edu/en/blogs/eureka/the-rise-and-spread-of-participatory-budgeting-in-european-cities)). **Cascais (Portugal)** became a global reference for execution quality. Portugal alone now hosts hundreds of municipal PBs.
-- **Global numbers**. Estimates vary by definition, but **7,000–11,500 municipal PB processes** are reportedly running worldwide as of the mid-2020s ([EU Parliament briefing](https://www.europarl.europa.eu/RegData/etudes/BRIE/2024/762412/EPRS_BRI(2024)762412_EN.pdf)).
-- **Decline at the origin**. Porto Alegre's PB has eroded since 2017: shrinking fiscal envelopes, political disinvestment after PT lost the mayoralty, and "gradual policy abandonment" as undelivered projects discouraged participants ([WRI](https://www.wri.org/insights/what-if-citizens-set-city-budgets-experiment-captivated-world-participatory-budgeting), [Cambridge — *Time of Closure*](https://www.cambridge.org/core/journals/journal-of-latin-american-studies/article/time-of-closure-participatory-budgeting-in-porto-alegre-brazil-after-the-workers-party-era/44EC7210668F4E4CC82853961C5133E9)). Wampler's comparative work across eight Brazilian cities shows that political commitment, not technology, predicts success.
+- **Hyperscale PB**. **Paris** raised its PB envelope to **€100 million/year** (2014→), and **Madrid** matched it — making them the largest sustained PB processes ever ([EURAC blog][eurac-pb]). **Cascais (Portugal)** became a global reference for execution quality. Portugal alone now hosts hundreds of municipal PBs.
+- **Global numbers**. Estimates vary by definition, but **7,000–11,500 municipal PB processes** are reportedly running worldwide as of the mid-2020s ([EU Parliament briefing][europarl-pb]).
+- **Decline at the origin**. Porto Alegre's PB has eroded since 2017: shrinking fiscal envelopes, political disinvestment after PT lost the mayoralty, and "gradual policy abandonment" as undelivered projects discouraged participants ([WRI][wri-pb], [Cambridge — *Time of Closure*][cambridge-closure]). Wampler's comparative work across eight Brazilian cities shows that political commitment, not technology, predicts success.
 - **AI-mediated deliberation**. Polis remains the canonical tool, but newer experiments (Talk to the City, DeepDemocracy, Generative AI-augmented Decidim modules) cluster comments and synthesize "bridging" positions automatically.
 - **Methodological diversification**. Cities are moving past "approve up to N projects" toward methods aligned with the ranking-survey literature — constant-sum point allocation, ranked-choice tabulation, and quadratic voting/funding (pioneered by Glen Weyl and used in Colorado's 2019 legislative appropriations and in Gitcoin Grants).
 
@@ -75,15 +75,15 @@ The **vote** is where the ranking-survey methodologies become directly relevant:
 
 | Platform | Origin | Best for | License |
 |---|---|---|---|
-| **[Decidim](https://decidim.org/)** | Barcelona, 2017 | Full civic-participation suite incl. PB, assemblies, votes | AGPL-3.0 |
-| **[CONSUL Democracy](https://consuldemocracy.org/)** | Madrid, 2015 | PB + petitions + debates; lighter than Decidim | AGPL-3.0 |
-| **[Loomio](https://github.com/loomio/loomio)** | Wellington, 2012 | Small/medium groups, cooperatives, internal decisions | AGPL-3.0 |
-| **[Polis](https://github.com/compdemocracy/polis)** | Seattle, 2012 | Mapping viewpoints, finding rough consensus | AGPL-3.0 |
-| **[Your Priorities](https://github.com/CitizensFoundation/your-priorities-app)** | Iceland, 2008 (after Reykjavík PB) | Idea generation + pro/con argument ranking | AGPL-3.0 |
-| **[Cobudget](https://www.cobudget.com/)** (Greaterthan / Enspiral) | NZ, 2014 | Money allocation by small groups; constant-sum native | AGPL-3.0 |
-| **[Belenios](https://www.belenios.org/)** | INRIA, France | Verifiable secret ballots (Schulze/STV/MJ) | CeCILL |
-| **[CIVS](https://civs1.civs.us/)** | Cornell, 2003 | Condorcet polls — academic & FOSS communities | open |
-| **[Stanford PB Platform](https://pbstanford.org/)** | Stanford, 2015 | Research-backed approval/knapsack-vote PB | open |
+| **[Decidim][decidim]** | Barcelona, 2017 | Full civic-participation suite incl. PB, assemblies, votes | AGPL-3.0 |
+| **[CONSUL Democracy][consuldemocracy]** | Madrid, 2015 | PB + petitions + debates; lighter than Decidim | AGPL-3.0 |
+| **[Loomio][gh-loomio]** | Wellington, 2012 | Small/medium groups, cooperatives, internal decisions | AGPL-3.0 |
+| **[Polis][gh-polis]** | Seattle, 2012 | Mapping viewpoints, finding rough consensus | AGPL-3.0 |
+| **[Your Priorities][gh-your-priorities]** | Iceland, 2008 (after Reykjavík PB) | Idea generation + pro/con argument ranking | AGPL-3.0 |
+| **[Cobudget][cobudget]** (Greaterthan / Enspiral) | NZ, 2014 | Money allocation by small groups; constant-sum native | AGPL-3.0 |
+| **[Belenios][belenios]** | INRIA, France | Verifiable secret ballots (Schulze/STV/MJ) | CeCILL |
+| **[CIVS][civs]** | Cornell, 2003 | Condorcet polls — academic & FOSS communities | open |
+| **[Stanford PB Platform][pbstanford]** | Stanford, 2015 | Research-backed approval/knapsack-vote PB | open |
 
 A working **PB stack** today typically looks like: Decidim (or CONSUL) for the full lifecycle; a national ID or municipal SSO for verification; Polis if there's a deliberation phase before proposals are written; Belenios when ballot secrecy or verifiability is required; the Stanford PB platform when the city wants knapsack-style "budget-aware" voting.
 
@@ -103,14 +103,14 @@ These are the open debates if you want to go deeper:
 
 ## 6. Reading list for going deeper
 
-- Brian Wampler, Stephanie McNulty, Michael Touchton — *[Participatory Budgeting in Global Perspective](https://global.oup.com/academic/product/participatory-budgeting-in-global-perspective-9780192897756)* (OUP, 2021) — the current reference book.
+- Brian Wampler, Stephanie McNulty, Michael Touchton — *[Participatory Budgeting in Global Perspective][oup-wampler]* (OUP, 2021) — the current reference book.
 - Yves Sintomer, Carsten Herzberg, Anja Röcke — *Participatory Budgeting in Europe* (Routledge).
-- [EU Parliament briefing — *Participatory budgeting: a pathway to inclusive governance* (2024)](https://www.europarl.europa.eu/RegData/etudes/BRIE/2024/762412/EPRS_BRI(2024)762412_EN.pdf).
-- [Computational Culture — *The Decidim 'soft infrastructure'*](http://computationalculture.net/the-decidim-soft-infrastructure/) — the best academic account of Decidim's design philosophy.
-- [openDemocracy — *From Occupy to online democracy: the Loomio story*](https://www.opendemocracy.net/en/from-occupy-to-online-democracy-loomio-story/).
-- [Computational Democracy Project — vTaiwan case study](https://compdemocracy.org/case-studies/2014-vtaiwan/).
-- [WRI — *What if citizens set city budgets?*](https://www.wri.org/insights/what-if-citizens-set-city-budgets-experiment-captivated-world-participatory-budgeting) on Porto Alegre's decline.
-- [Participedia](https://participedia.net/) — case database of 2,000+ deliberative and PB processes.
+- [EU Parliament briefing — *Participatory budgeting: a pathway to inclusive governance* (2024)][europarl-pb].
+- [Computational Culture — *The Decidim 'soft infrastructure'*][comp-culture-decidim] — the best academic account of Decidim's design philosophy.
+- [openDemocracy — *From Occupy to online democracy: the Loomio story*][opendemocracy-loomio].
+- [Computational Democracy Project — vTaiwan case study][compdemocracy-vtaiwan].
+- [WRI — *What if citizens set city budgets?*][wri-pb] on Porto Alegre's decline.
+- [Participedia][participedia] — case database of 2,000+ deliberative and PB processes.
 
 ---
 
@@ -122,28 +122,65 @@ Participatory budgeting started in 1989 as a left-wing municipal reform in south
 
 ## Sources
 
-- [Wikipedia — Participatory budgeting](https://en.wikipedia.org/wiki/Participatory_budgeting)
-- [Wikipedia — Participatory budgeting by country](https://en.wikipedia.org/wiki/Participatory_budgeting_by_country)
-- [Participedia — Porto Alegre 1989–present](https://participedia.net/case/5524)
-- [WRI — Porto Alegre PB challenges](https://www.wri.org/insights/what-if-citizens-set-city-budgets-experiment-captivated-world-participatory-budgeting)
-- [Cambridge — *A Time of Closure*](https://www.cambridge.org/core/journals/journal-of-latin-american-studies/article/time-of-closure-participatory-budgeting-in-porto-alegre-brazil-after-the-workers-party-era/44EC7210668F4E4CC82853961C5133E9)
-- [Cambridge — Changing urban movements after Porto Alegre's PB erosion](https://www.cambridge.org/core/journals/latin-american-politics-and-society/article/changing-urban-movements-repertoires-following-the-erosion-of-porto-alegres-participatory-budgeting-from-institutionalized-participation-to-deinstitutionalization/39480EBC25E1C90D56E7B76845121AFF)
-- [Wampler — *Participatory Budgeting in Brazil* (PSU Press)](https://www.psupress.org/books/titles/978-0-271-03252-8.html)
-- [Wampler, McNulty, Touchton — *Participatory Budgeting in Global Perspective* (OUP)](https://global.oup.com/academic/product/participatory-budgeting-in-global-perspective-9780192897756)
-- [EU Parliament briefing (2024)](https://www.europarl.europa.eu/RegData/etudes/BRIE/2024/762412/EPRS_BRI(2024)762412_EN.pdf)
-- [Eurac — Rise and spread of PB in European cities](https://www.eurac.edu/en/blogs/eureka/the-rise-and-spread-of-participatory-budgeting-in-european-cities)
-- [Lisbon PB results (openedition)](https://journals.openedition.org/factsreports/3363)
-- [Cascais PB (GIFT)](http://guide.fiscaltransparency.net/case-study/cascais-participatory-budgeting-portugal/)
-- [Centre for Public Impact — Green PB Lisbon](https://centreforpublicimpact.org/public-impact-fundamentals/green-participatory-budgeting-lisbon-portugal/)
-- [Democracy Technologies — Decide Madrid & CONSUL](https://democracy-technologies.org/participation/decide-madrid-and-consul/)
-- [Tandfonline — Technopolitical platforms in Madrid and Barcelona](https://www.tandfonline.com/doi/full/10.1080/10630732.2020.1786337)
-- [Computational Culture — Decidim soft infrastructure](http://computationalculture.net/the-decidim-soft-infrastructure/)
-- [Decidim](https://decidim.org/)
-- [CONSUL Democracy case study (EU OSOR)](https://interoperable-europe.ec.europa.eu/collection/open-source-observatory-osor/document/case-study-consul-democracy)
-- [Loomio cooperative history](https://www.loomio.coop/history.html)
-- [Wikipedia — Loomio](https://en.wikipedia.org/wiki/Loomio)
-- [openDemocracy — From Occupy to online democracy](https://www.opendemocracy.net/en/from-occupy-to-online-democracy-loomio-story/)
-- [Computational Democracy Project — vTaiwan case study](https://compdemocracy.org/case-studies/2014-vtaiwan/)
-- [RadicalxChange — Taiwan: Grassroots Digital Democracy That Works (PDF)](https://www.radicalxchange.org/updates/papers/Taiwan_Grassroots_Digital_Democracy_That_Works_V1_DIGITAL_.pdf)
-- [Democracy Foundation — list of e-voting & deliberation projects](https://democracy.foundation/similar-projects/)
-- [Participedia](https://participedia.net/)
+- [Wikipedia — Participatory budgeting][wiki-pb]
+- [Wikipedia — Participatory budgeting by country][wiki-pb-country]
+- [Participedia — Porto Alegre 1989–present][participedia-porto]
+- [WRI — Porto Alegre PB challenges][wri-pb]
+- [Cambridge — *A Time of Closure*][cambridge-closure]
+- [Cambridge — Changing urban movements after Porto Alegre's PB erosion][cambridge-urban]
+- [Wampler — *Participatory Budgeting in Brazil* (PSU Press)][psupress-wampler]
+- [Wampler, McNulty, Touchton — *Participatory Budgeting in Global Perspective* (OUP)][oup-wampler]
+- [EU Parliament briefing (2024)][europarl-pb]
+- [Eurac — Rise and spread of PB in European cities][eurac-pb]
+- [Lisbon PB results (openedition)][openedition-lisbon]
+- [Cascais PB (GIFT)][cascais-gift]
+- [Centre for Public Impact — Green PB Lisbon][cpi-lisbon]
+- [Democracy Technologies — Decide Madrid & CONSUL][democracy-tech-consul]
+- [Tandfonline — Technopolitical platforms in Madrid and Barcelona][tandfonline-tech]
+- [Computational Culture — Decidim soft infrastructure][comp-culture-decidim]
+- [Decidim][decidim]
+- [CONSUL Democracy case study (EU OSOR)][osor-consul]
+- [Loomio cooperative history][loomio-history]
+- [Wikipedia — Loomio][wiki-loomio]
+- [openDemocracy — From Occupy to online democracy][opendemocracy-loomio]
+- [Computational Democracy Project — vTaiwan case study][compdemocracy-vtaiwan]
+- [RadicalxChange — Taiwan: Grassroots Digital Democracy That Works (PDF)][radicalxchange-tw]
+- [Democracy Foundation — list of e-voting & deliberation projects][democracy-foundation]
+- [Participedia][participedia]
+
+
+<!--## Links-->
+
+[wiki-pb]: https://en.wikipedia.org/wiki/Participatory_budgeting
+[wiki-pb-country]: https://en.wikipedia.org/wiki/Participatory_budgeting_by_country
+[wiki-loomio]: https://en.wikipedia.org/wiki/Loomio
+[participedia-porto]: https://participedia.net/case/5524
+[participedia]: https://participedia.net/
+[openedition-lisbon]: https://journals.openedition.org/factsreports/3363
+[psupress-wampler]: https://www.psupress.org/books/titles/978-0-271-03252-8.html
+[oup-wampler]: https://global.oup.com/academic/product/participatory-budgeting-in-global-perspective-9780192897756
+[loomio-history]: https://www.loomio.coop/history.html
+[opendemocracy-loomio]: https://www.opendemocracy.net/en/from-occupy-to-online-democracy-loomio-story/
+[compdemocracy-vtaiwan]: https://compdemocracy.org/case-studies/2014-vtaiwan/
+[democracy-tech-consul]: https://democracy-technologies.org/participation/decide-madrid-and-consul/
+[comp-culture-decidim]: http://computationalculture.net/the-decidim-soft-infrastructure/
+[eurac-pb]: https://www.eurac.edu/en/blogs/eureka/the-rise-and-spread-of-participatory-budgeting-in-european-cities
+[europarl-pb]: https://www.europarl.europa.eu/RegData/etudes/BRIE/2024/762412/EPRS_BRI(2024)762412_EN.pdf
+[wri-pb]: https://www.wri.org/insights/what-if-citizens-set-city-budgets-experiment-captivated-world-participatory-budgeting
+[cambridge-closure]: https://www.cambridge.org/core/journals/journal-of-latin-american-studies/article/time-of-closure-participatory-budgeting-in-porto-alegre-brazil-after-the-workers-party-era/44EC7210668F4E4CC82853961C5133E9
+[cambridge-urban]: https://www.cambridge.org/core/journals/latin-american-politics-and-society/article/changing-urban-movements-repertoires-following-the-erosion-of-porto-alegres-participatory-budgeting-from-institutionalized-participation-to-deinstitutionalization/39480EBC25E1C90D56E7B76845121AFF
+[decidim]: https://decidim.org/
+[consuldemocracy]: https://consuldemocracy.org/
+[gh-loomio]: https://github.com/loomio/loomio
+[gh-polis]: https://github.com/compdemocracy/polis
+[gh-your-priorities]: https://github.com/CitizensFoundation/your-priorities-app
+[cobudget]: https://www.cobudget.com/
+[belenios]: https://www.belenios.org/
+[civs]: https://civs1.civs.us/
+[pbstanford]: https://pbstanford.org/
+[cascais-gift]: http://guide.fiscaltransparency.net/case-study/cascais-participatory-budgeting-portugal/
+[cpi-lisbon]: https://centreforpublicimpact.org/public-impact-fundamentals/green-participatory-budgeting-lisbon-portugal/
+[tandfonline-tech]: https://www.tandfonline.com/doi/full/10.1080/10630732.2020.1786337
+[osor-consul]: https://interoperable-europe.ec.europa.eu/collection/open-source-observatory-osor/document/case-study-consul-democracy
+[radicalxchange-tw]: https://www.radicalxchange.org/updates/papers/Taiwan_Grassroots_Digital_Democracy_That_Works_V1_DIGITAL_.pdf
+[democracy-foundation]: https://democracy.foundation/similar-projects/
