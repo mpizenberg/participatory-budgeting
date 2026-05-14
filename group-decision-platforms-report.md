@@ -4,11 +4,11 @@
 
 Two overlapping traditions meet here:
 
-**Group decision platforms** — software that helps a defined group (a team, cooperative, association, party, city council) move from discussion to a binding or advisory decision. The unit of analysis is the *deliberation* and *vote*. Examples: Loomio, OpaVote, Helios, Decidim assemblies, Polis.
+**Group decision platforms** — software that helps a defined group (a team, cooperative, association, party, city council) move from discussion to a binding or advisory decision. The unit of analysis is the _deliberation_ and _vote_. Examples: Loomio, OpaVote, Helios, Decidim assemblies, Polis.
 
 **Participatory budgeting (PB)** — a specific civic process where residents directly decide how to spend part of a public budget. It usually combines four moments: (1) idea collection, (2) eligibility/feasibility vetting by the administration, (3) public voting (often ranked or constant-sum), and (4) execution monitoring. Originally a face-to-face process; now overwhelmingly digital or hybrid.
 
-The fields converge because PB, at scale, *requires* group-decision infrastructure: tens of thousands of proposals, hundreds of thousands of voters, multilingual access, identity verification, and aggregation rules that map onto methodologies from the ranking-survey literature (constant-sum allocation, ranked voting, MaxDiff-style prioritization).
+The fields converge because PB, at scale, _requires_ group-decision infrastructure: tens of thousands of proposals, hundreds of thousands of voters, multilingual access, identity verification, and aggregation rules that map onto methodologies from the ranking-survey literature (constant-sum allocation, ranked voting, MaxDiff-style prioritization).
 
 ---
 
@@ -41,7 +41,7 @@ This is the inflection point that defines today's open-source landscape.
 - **Madrid**: Ahora Madrid (the citizens' platform that won the 2015 election) launched **Decide Madrid** in September 2015. Its codebase, **CONSUL**, was released as free software ([Democracy Technologies][democracy-tech-consul]).
 - **Barcelona**: Barcelona en Comú (Ada Colau's coalition) launched **decidim.barcelona** on 31 January 2016, initially as a fork of CONSUL. In 2017 the team **rewrote it from scratch** in Ruby on Rails as **Decidim** — modular, federated, with a strong "democratic guarantees" social contract that every install must honor ([Computational Culture][comp-culture-decidim]).
 
-Both platforms supported the full PB cycle (proposal → debate → vetting → vote → monitoring). By the mid-2020s CONSUL was deployed in 130+ institutions across 33 countries; Decidim in 400+ instances including national governments (France's *Make.org* partnerships, Mexico City, the European Commission's *Conference on the Future of Europe*).
+Both platforms supported the full PB cycle (proposal → debate → vetting → vote → monitoring). By the mid-2020s CONSUL was deployed in 130+ institutions across 33 countries; Decidim in 400+ instances including national governments (France's _Make.org_ partnerships, Mexico City, the European Commission's _Conference on the Future of Europe_).
 
 ### Phase V — Scale, AI, and the legitimacy crisis (2017–today)
 
@@ -49,7 +49,7 @@ Several trends shape the current era:
 
 - **Hyperscale PB**. **Paris** raised its PB envelope to **€100 million/year** (2014→), and **Madrid** matched it — making them the largest sustained PB processes ever ([EURAC blog][eurac-pb]). **Cascais (Portugal)** became a global reference for execution quality. Portugal alone now hosts hundreds of municipal PBs.
 - **Global numbers**. Estimates vary by definition, but **7,000–11,500 municipal PB processes** are reportedly running worldwide as of the mid-2020s ([EU Parliament briefing][europarl-pb]).
-- **Decline at the origin**. Porto Alegre's PB has eroded since 2017: shrinking fiscal envelopes, political disinvestment after PT lost the mayoralty, and "gradual policy abandonment" as undelivered projects discouraged participants ([WRI][wri-pb], [Cambridge — *Time of Closure*][cambridge-closure]). Wampler's comparative work across eight Brazilian cities shows that political commitment, not technology, predicts success.
+- **Decline at the origin**. Porto Alegre's PB has eroded since 2017: shrinking fiscal envelopes, political disinvestment after PT lost the mayoralty, and "gradual policy abandonment" as undelivered projects discouraged participants ([WRI][wri-pb], [Cambridge — _Time of Closure_][cambridge-closure]). Wampler's comparative work across eight Brazilian cities shows that political commitment, not technology, predicts success.
 - **AI-mediated deliberation**. Polis remains the canonical tool, but newer experiments (Talk to the City, DeepDemocracy, Generative AI-augmented Decidim modules) cluster comments and synthesize "bridging" positions automatically.
 - **Methodological diversification**. Cities are moving past "approve up to N projects" toward methods aligned with the ranking-survey literature — constant-sum point allocation, ranked-choice tabulation, and quadratic voting/funding (pioneered by Glen Weyl and used in Colorado's 2019 legislative appropriations and in Gitcoin Grants).
 
@@ -59,13 +59,13 @@ Several trends shape the current era:
 
 Most digital PB cycles follow the same pipeline:
 
-| Stage | Typical duration | Decision-theory mapping |
-|---|---|---|
-| Agenda framing | 2–4 weeks | Often opaque — handled by the administration |
-| Proposal collection | 4–8 weeks | Open submissions, often with seconding thresholds |
-| Technical feasibility | 4–8 weeks | Admin filtering — the most politically contested step |
-| Public vote | 2–4 weeks | Approval, ranked, or constant-sum (€ allocation) |
-| Implementation | 1–3 years | Monitored via "follow-up" dashboards |
+| Stage                 | Typical duration | Decision-theory mapping                               |
+| --------------------- | ---------------- | ----------------------------------------------------- |
+| Agenda framing        | 2–4 weeks        | Often opaque — handled by the administration          |
+| Proposal collection   | 4–8 weeks        | Open submissions, often with seconding thresholds     |
+| Technical feasibility | 4–8 weeks        | Admin filtering — the most politically contested step |
+| Public vote           | 2–4 weeks        | Approval, ranked, or constant-sum (€ allocation)      |
+| Implementation        | 1–3 years        | Monitored via "follow-up" dashboards                  |
 
 The **vote** is where the ranking-survey methodologies become directly relevant: Paris and Lisbon use approval-style ballots; some smaller cities use constant-sum (give the citizen €X to allocate); a handful experiment with IRV or Condorcet aggregation when picking among rival mutually-exclusive projects.
 
@@ -73,17 +73,17 @@ The **vote** is where the ranking-survey methodologies become directly relevant:
 
 ## 4. Map of the current open-source platform landscape
 
-| Platform | Origin | Best for | License |
-|---|---|---|---|
-| **[Decidim][decidim]** | Barcelona, 2017 | Full civic-participation suite incl. PB, assemblies, votes | AGPL-3.0 |
-| **[CONSUL Democracy][consuldemocracy]** | Madrid, 2015 | PB + petitions + debates; lighter than Decidim | AGPL-3.0 |
-| **[Loomio][gh-loomio]** | Wellington, 2012 | Small/medium groups, cooperatives, internal decisions | AGPL-3.0 |
-| **[Polis][gh-polis]** | Seattle, 2012 | Mapping viewpoints, finding rough consensus | AGPL-3.0 |
-| **[Your Priorities][gh-your-priorities]** | Iceland, 2008 (after Reykjavík PB) | Idea generation + pro/con argument ranking | AGPL-3.0 |
-| **[Cobudget][cobudget]** (Greaterthan / Enspiral) | NZ, 2014 | Money allocation by small groups; constant-sum native | AGPL-3.0 |
-| **[Belenios][belenios]** | INRIA, France | Verifiable secret ballots (Schulze/STV/MJ) | CeCILL |
-| **[CIVS][civs]** | Cornell, 2003 | Condorcet polls — academic & FOSS communities | open |
-| **[Stanford PB Platform][pbstanford]** | Stanford, 2015 | Research-backed approval/knapsack-vote PB | open |
+| Platform                                          | Origin                             | Best for                                                   | License  |
+| ------------------------------------------------- | ---------------------------------- | ---------------------------------------------------------- | -------- |
+| **[Decidim][decidim]**                            | Barcelona, 2017                    | Full civic-participation suite incl. PB, assemblies, votes | AGPL-3.0 |
+| **[CONSUL Democracy][consuldemocracy]**           | Madrid, 2015                       | PB + petitions + debates; lighter than Decidim             | AGPL-3.0 |
+| **[Loomio][gh-loomio]**                           | Wellington, 2012                   | Small/medium groups, cooperatives, internal decisions      | AGPL-3.0 |
+| **[Polis][gh-polis]**                             | Seattle, 2012                      | Mapping viewpoints, finding rough consensus                | AGPL-3.0 |
+| **[Your Priorities][gh-your-priorities]**         | Iceland, 2008 (after Reykjavík PB) | Idea generation + pro/con argument ranking                 | AGPL-3.0 |
+| **[Cobudget][cobudget]** (Greaterthan / Enspiral) | NZ, 2014                           | Money allocation by small groups; constant-sum native      | AGPL-3.0 |
+| **[Belenios][belenios]**                          | INRIA, France                      | Verifiable secret ballots (Schulze/STV/MJ)                 | CeCILL   |
+| **[CIVS][civs]**                                  | Cornell, 2003                      | Condorcet polls — academic & FOSS communities              | open     |
+| **[Stanford PB Platform][pbstanford]**            | Stanford, 2015                     | Research-backed approval/knapsack-vote PB                  | open     |
 
 A working **PB stack** today typically looks like: Decidim (or CONSUL) for the full lifecycle; a national ID or municipal SSO for verification; Polis if there's a deliberation phase before proposals are written; Belenios when ballot secrecy or verifiability is required; the Stanford PB platform when the city wants knapsack-style "budget-aware" voting.
 
@@ -96,20 +96,20 @@ These are the open debates if you want to go deeper:
 - **Inclusion vs. self-selection**. Digital PB tends to over-represent already-engaged citizens; mitigations include sortition (citizen assemblies), proactive outreach, and youth/school PB.
 - **Binding vs. advisory**. Most processes are advisory in law; their legitimacy comes from the political commitment to implement results — exactly the variable Wampler identifies as decisive.
 - **Aggregation rule choice**. Approval voting is dominant because it's simple but produces "winner-take-all-the-popular-categories" results. Knapsack voting (vote subject to budget constraint) and constant-sum better reflect resource scarcity; Condorcet/IRV better handle rival mutually-exclusive projects.
-- **AI-augmented deliberation**. Polis-style clustering is increasingly paired with LLM summarization (Anthropic's collaboration with the Computational Democracy Project on *Talk to the City*, Meta's *Community Forums*, the *Recursive Public* prototype). The risk is that the model becomes the de facto agenda-setter.
+- **AI-augmented deliberation**. Polis-style clustering is increasingly paired with LLM summarization (Anthropic's collaboration with the Computational Democracy Project on _Talk to the City_, Meta's _Community Forums_, the _Recursive Public_ prototype). The risk is that the model becomes the de facto agenda-setter.
 - **Federation and platform sovereignty**. Decidim's "democratic guarantees" contract is an attempt to prevent platform capture; whether municipal IT can sustain self-hosting versus reverting to SaaS is unresolved.
 
 ---
 
 ## 6. Reading list for going deeper
 
-- Brian Wampler, Stephanie McNulty, Michael Touchton — *[Participatory Budgeting in Global Perspective][oup-wampler]* (OUP, 2021) — the current reference book.
-- Yves Sintomer, Carsten Herzberg, Anja Röcke — *Participatory Budgeting in Europe* (Routledge).
-- [EU Parliament briefing — *Participatory budgeting: a pathway to inclusive governance* (2024)][europarl-pb].
-- [Computational Culture — *The Decidim 'soft infrastructure'*][comp-culture-decidim] — the best academic account of Decidim's design philosophy.
-- [openDemocracy — *From Occupy to online democracy: the Loomio story*][opendemocracy-loomio].
+- Brian Wampler, Stephanie McNulty, Michael Touchton — _[Participatory Budgeting in Global Perspective][oup-wampler]_ (OUP, 2021) — the current reference book.
+- Yves Sintomer, Carsten Herzberg, Anja Röcke — _Participatory Budgeting in Europe_ (Routledge).
+- [EU Parliament briefing — _Participatory budgeting: a pathway to inclusive governance_ (2024)][europarl-pb].
+- [Computational Culture — _The Decidim 'soft infrastructure'_][comp-culture-decidim] — the best academic account of Decidim's design philosophy.
+- [openDemocracy — _From Occupy to online democracy: the Loomio story_][opendemocracy-loomio].
 - [Computational Democracy Project — vTaiwan case study][compdemocracy-vtaiwan].
-- [WRI — *What if citizens set city budgets?*][wri-pb] on Porto Alegre's decline.
+- [WRI — _What if citizens set city budgets?_][wri-pb] on Porto Alegre's decline.
 - [Participedia][participedia] — case database of 2,000+ deliberative and PB processes.
 
 ---
@@ -126,10 +126,10 @@ Participatory budgeting started in 1989 as a left-wing municipal reform in south
 - [Wikipedia — Participatory budgeting by country][wiki-pb-country]
 - [Participedia — Porto Alegre 1989–present][participedia-porto]
 - [WRI — Porto Alegre PB challenges][wri-pb]
-- [Cambridge — *A Time of Closure*][cambridge-closure]
+- [Cambridge — _A Time of Closure_][cambridge-closure]
 - [Cambridge — Changing urban movements after Porto Alegre's PB erosion][cambridge-urban]
-- [Wampler — *Participatory Budgeting in Brazil* (PSU Press)][psupress-wampler]
-- [Wampler, McNulty, Touchton — *Participatory Budgeting in Global Perspective* (OUP)][oup-wampler]
+- [Wampler — _Participatory Budgeting in Brazil_ (PSU Press)][psupress-wampler]
+- [Wampler, McNulty, Touchton — _Participatory Budgeting in Global Perspective_ (OUP)][oup-wampler]
 - [EU Parliament briefing (2024)][europarl-pb]
 - [Eurac — Rise and spread of PB in European cities][eurac-pb]
 - [Lisbon PB results (openedition)][openedition-lisbon]
@@ -147,7 +147,6 @@ Participatory budgeting started in 1989 as a left-wing municipal reform in south
 - [RadicalxChange — Taiwan: Grassroots Digital Democracy That Works (PDF)][radicalxchange-tw]
 - [Democracy Foundation — list of e-voting & deliberation projects][democracy-foundation]
 - [Participedia][participedia]
-
 
 <!--## Links-->
 
