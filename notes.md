@@ -1,3 +1,7 @@
+# Notes
+
+## Ranking Voting
+
 Ranking > Rating to force people to take decisions, mitigate max-raters, reveals what truly matters.
 
 This ref on ranking methods is quite good: https://www.opinionx.co/blog/choosing-a-survey-ranking-method
@@ -24,6 +28,8 @@ Open-Source tools:
 - RCTab: https://www.rcvresources.org/rctab/
 - OpenRCV: https://github.com/cjerdonek/open-rcv
 
+## Group Decision and Participatory Budgetting
+
 Group decision platforms:
 - Decidim: https://decidim.org/
   Particularly interesting is https://decidim.org/blog/2026-04-07-case-study-participatory-budget-2020-2023-in-barcelona/
@@ -38,3 +44,7 @@ Examples PB:
   - https://centreforpublicimpact.org/public-impact-fundamentals/green-participatory-budgeting-lisbon-portugal/
 - Decidim Barcelona (2017-today):
   - Aragon et. al. 2017, Deliberative Platform Design: The Case Study of the Online Discussions in Decidim Barcelona. https://arxiv.org/pdf/1707.06526
+
+## Grant Funding
+
+TODO
