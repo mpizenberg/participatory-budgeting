@@ -1,5 +1,7 @@
 # Notes
 
+Potential title: Where participatory budgeting and grant funding meet, or how to effectively survey large groups of people and fairly distribute significant amount of funds.
+
 ## Ranking Voting
 
 Ranking > Rating to force people to take decisions, mitigate max-raters, reveals what truly matters.
@@ -28,7 +30,7 @@ Open-Source tools:
 - RCTab: https://www.rcvresources.org/rctab/
 - OpenRCV: https://github.com/cjerdonek/open-rcv
 
-## Group Decision and Participatory Budgetting
+## Group Decision and Participatory Budgeting
 
 Group decision platforms:
 - Decidim: https://decidim.org/

@@ -28,7 +28,7 @@ Ranking surveys are designed to elicit ordered preferences across a set of optio
 
 ## 3. Best–Worst Scaling (MaxDiff)
 
-**Mechanic.** Respondents are shown sets of 3–6 items and asked to pick the *best* and *worst* in each set. Across many such sets (designed via balanced incomplete block designs), each item appears multiple times and against varied competitors. Latent utilities are estimated from the choice patterns ([Qualtrics — MaxDiff intro](https://www.qualtrics.com/articles/strategy-research/an-introduction-to-maxdiff/), [Displayr](https://www.displayr.com/what-is-maxdiff/)).
+**Mechanic.** Respondents are shown sets of 3–6 items and asked to pick the _best_ and _worst_ in each set. Across many such sets (designed via balanced incomplete block designs), each item appears multiple times and against varied competitors. Latent utilities are estimated from the choice patterns ([Qualtrics — MaxDiff intro](https://www.qualtrics.com/articles/strategy-research/an-introduction-to-maxdiff/), [Displayr](https://www.displayr.com/what-is-maxdiff/)).
 
 **Strengths.** Eliminates "everything is important" responses, immune to scale-use bias and scale-meaning bias, gathers preference data faster than full pairwise comparison while preserving statistical rigor ([Pollfish](https://www.pollfish.com/resources/blog/pollfish-school/what-is-a-maxdiff-analysis-the-new-best-worst-scaling-feature/), [SurveyMonkey](https://www.surveymonkey.com/market-research/resources/best-worst-scaling/)).
 
@@ -43,6 +43,7 @@ Ranking surveys are designed to elicit ordered preferences across a set of optio
 **Mechanic.** Items are described as bundles of attribute levels (e.g., a phone defined by brand × price × battery life). Respondents express preferences over full profiles, from which part-worth utilities for each attribute level are derived ([Wikipedia](https://en.wikipedia.org/wiki/Conjoint_analysis), [Qualtrics — Conjoint types](https://www.qualtrics.com/articles/strategy-research/types-of-conjoint/)).
 
 **Common variants.**
+
 - **Choice-Based Conjoint (CBC):** the dominant format — respondents choose a preferred profile from 2–6 alternatives per task.
 - **Full-Profile / Ratings-Based:** respondents rate or rank complete profiles.
 - **Adaptive Conjoint Analysis (ACA):** the survey adapts to a respondent's prior answers, focusing on attributes most relevant to them.
@@ -50,7 +51,7 @@ Ranking surveys are designed to elicit ordered preferences across a set of optio
 
 ([Conjointly](https://conjointly.com/guides/what-is-conjoint-analysis/), [HBS Online](https://online.hbs.edu/blog/post/what-is-conjoint-analysis), [Sawtooth](https://sawtoothsoftware.com/conjoint-analysis))
 
-**Strengths.** Reveals not just *which* option is preferred but *why* — the relative weight of each attribute. Used widely for pricing research, feature prioritization, and demand forecasting, including in healthcare to elicit patient preferences ([PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8879380/)).
+**Strengths.** Reveals not just _which_ option is preferred but _why_ — the relative weight of each attribute. Used widely for pricing research, feature prioritization, and demand forecasting, including in healthcare to elicit patient preferences ([PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8879380/)).
 
 **Weaknesses.** Design-heavy; requires careful selection of attributes and levels, plus larger sample sizes for stable estimates.
 
@@ -58,7 +59,7 @@ Ranking surveys are designed to elicit ordered preferences across a set of optio
 
 ## 5. Constant Sum / Points Allocation
 
-**Mechanic.** Respondents distribute a fixed number of points (commonly 100) across options to reflect the *magnitude* of relative preference, not just the order ([OpinionX — Constant Sum](https://www.opinionx.co/blog/constant-sum), [QuestionPro](https://www.questionpro.com/features/constant-sum.html)).
+**Mechanic.** Respondents distribute a fixed number of points (commonly 100) across options to reflect the _magnitude_ of relative preference, not just the order ([OpinionX — Constant Sum](https://www.opinionx.co/blog/constant-sum), [QuestionPro](https://www.questionpro.com/features/constant-sum.html)).
 
 **Strengths.** Yields ratio-level data: a 40/30/20/10 allocation says option A is twice as preferred as C, not merely "ranked higher." Forces trade-offs because the budget is fixed ([SurveySparrow](https://surveysparrow.com/what-is-constant-sum/), [Drive Research](https://www.driveresearch.com/market-research-company-blog/what-is-a-constant-sum-scale-in-market-research/)).
 
@@ -68,7 +69,7 @@ Ranking surveys are designed to elicit ordered preferences across a set of optio
 
 ## 6. Ranked-Choice Voting Methods
 
-When ranking surveys are used to elect a single winner or aggregate group preferences, the choice of *aggregation rule* matters as much as the ballot format. The main families:
+When ranking surveys are used to elect a single winner or aggregate group preferences, the choice of _aggregation rule_ matters as much as the ballot format. The main families:
 
 - **Plurality / First-Past-the-Post:** count only first choices. Vulnerable to vote splitting.
 - **Instant-Runoff Voting (IRV) / Single Transferable Vote:** iteratively eliminate the lowest first-choice candidate and reallocate ballots until one option exceeds 50%.
@@ -83,7 +84,7 @@ This matters for survey designers: identical ballots can yield different "winner
 
 ## 7. Q-Methodology (Q-Sort)
 
-**Mechanic.** A hybrid qualitative–quantitative method developed by William Stephenson in the 1930s. Participants sort a curated set of statements (the "Q-sample") into a forced quasi-normal distribution from "most agree" to "most disagree." The resulting Q-sorts are then factor-analyzed across *people* (rather than items) to identify shared viewpoints ([Wikipedia](https://en.wikipedia.org/wiki/Q_methodology), [qmethod.org](https://qmethod.org/), [Better Evaluation](https://www.betterevaluation.org/methods-approaches/methods/q-methodology)).
+**Mechanic.** A hybrid qualitative–quantitative method developed by William Stephenson in the 1930s. Participants sort a curated set of statements (the "Q-sample") into a forced quasi-normal distribution from "most agree" to "most disagree." The resulting Q-sorts are then factor-analyzed across _people_ (rather than items) to identify shared viewpoints ([Wikipedia](https://en.wikipedia.org/wiki/Q_methodology), [qmethod.org](https://qmethod.org/), [Better Evaluation](https://www.betterevaluation.org/methods-approaches/methods/q-methodology)).
 
 **Strengths.** Reveals subjective viewpoints and discourses, not population frequencies. Used in nursing, public health, education, and policy research ([ERIC PDF — Damio](https://files.eric.ed.gov/fulltext/EJ1207820.pdf), [Wiley — Rost 2021](https://onlinelibrary.wiley.com/doi/full/10.1002/capr.12367)).
 
@@ -131,7 +132,7 @@ A formal comparison study by Smyth, Olson & Burke (2018) directly compared ranki
 2. **Do items have attributes?** Yes → conjoint. No → MaxDiff or pairwise.
 3. **Need magnitude, not just order?** Constant sum.
 4. **Aggregating to a single group choice?** Choose IRV or a Condorcet method; avoid Borda where strategic voting is plausible.
-5. **Studying *viewpoints* rather than *averages*?** Q-sort.
+5. **Studying _viewpoints_ rather than _averages_?** Q-sort.
 6. **Limited sample / mobile-first?** MaxDiff (faster than full pairwise, mobile-friendly).
 
 ---
