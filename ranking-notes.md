@@ -36,3 +36,5 @@ Examples PB:
 - Lisbon Lx-PB (2008-today):
   - https://journals.openedition.org/factsreports/3363#ftn17
   - https://centreforpublicimpact.org/public-impact-fundamentals/green-participatory-budgeting-lisbon-portugal/
+- Decidim Barcelona (2017-today):
+  - Aragon et. al. 2017, Deliberative Platform Design: The Case Study of the Online Discussions in Decidim Barcelona. https://arxiv.org/pdf/1707.06526
