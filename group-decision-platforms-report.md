@@ -103,8 +103,8 @@ These are the open debates if you want to go deeper:
 
 ## 6. Reading list for going deeper
 
-- Brian Wampler, Stephanie McNulty, Michael Touchton — _[Participatory Budgeting in Global Perspective][oup-wampler]_ (OUP, 2021) — the current reference book.
-- Yves Sintomer, Carsten Herzberg, Anja Röcke — _Participatory Budgeting in Europe_ (Routledge).
+- Brian Wampler, Stephanie McNulty, Michael Touchton — _[Participatory Budgeting in Global Perspective][oup-wampler]_ (OUP, 2021) — the current reference book ($85).
+- Yves Sintomer, Carsten Herzberg, Anja Röcke — _Participatory Budgeting in Europe_ (2016, Routledge).
 - [EU Parliament briefing — _Participatory budgeting: a pathway to inclusive governance_ (2024)][europarl-pb].
 - [Computational Culture — _The Decidim 'soft infrastructure'_][comp-culture-decidim] — the best academic account of Decidim's design philosophy.
 - [openDemocracy — _From Occupy to online democracy: the Loomio story_][opendemocracy-loomio].
