@@ -296,9 +296,55 @@ The commit phase is straightforward in Plutus/Aiken: the commit datum stores `H(
 - **Bond / slashing** (weak). Collateral locked at commit time is forfeited (burned or sent to a treasury) on non-reveal. Discourages but does not prevent selective abstention — a sufficiently motivated voter can pay the bond.
 - **Default-ballot via relayer** (medium). After the reveal window, any third party can submit a transaction that defaults an unrevealed commit to a null ballot, incentivized by a bounty paid from the forfeited bond. Non-reveal becomes equivalent to casting the default ballot. The voter still has a tactical choice between "my committed vote" and "the default," but the full last-mover advantage is removed.
 - **Threshold encryption with a trustee committee** (strong). Ballots are encrypted to a t-of-n public key held by trustees (DReps, SPOs, or a dedicated election committee). After the voting window closes, trustees publish their decryption shares and anyone reconstructs the plaintext ballots. Voters do not control reveal. Requires an honest threshold of trustees and an off-chain coordination protocol; the chain holds the ciphertexts and verifies the shares.
-- **Timelock encryption (Drand `tlock`)** (strongest). Ballots are encrypted under a Drand "League of Entropy" public key whose decryption material is broadcast at a specific future round. After that round anyone can decrypt; before it, no one can. The voter has no reveal-time choice — decryption is a function of time, not voter action — and no trustee committee is required beyond Drand itself. The chain stores ciphertexts as datums and verifies decrypted plaintexts against the Drand-derived key.
+- **Timelock encryption (Drand `tlock`)** (strongest). Ballots are encrypted under a Drand "League of Entropy" public key whose decryption material is broadcast at a specific future round. After that round anyone can decrypt; before it, no one can. The voter has no reveal-time choice — decryption is a function of time, not voter action — and no trustee committee is required beyond Drand itself. The chain stores ciphertexts as datums; the tally is performed off-chain after the target Drand round publishes. §6.6 examines the on-chain feasibility of this in detail.
 
 For genuinely forced reveal, **Drand timelock encryption is the cleanest option available today** and is the recommended primary mechanism on Cardano, with classic commit–reveal retained as a recoverable fallback in case of beacon outage. Threshold encryption with a trustee committee is the next-best alternative and avoids the external dependency on Drand, at the cost of a governance question about trustee selection.
+
+### 6.6 Is Drand `tlock` on Aiken actually feasible? A detailed look
+
+The §6.5 recommendation deserves scrutiny, because Cardano's pairing builtins have a specific limitation that determines what kind of tlock construction is possible.
+
+**Available primitives.** Plutus V3 (CIP-0381) exposes BLS12-381 builtins that Aiken surfaces via `aiken/crypto/bls12_381`: `G1`/`G2` `add`, `scalar_mul`, `neg`, `equal`, `compress`, `uncompress`, `hash_to_group` (RFC 9380, configurable DST); and the pairing as `miller_loop : G1 → G2 → MlResult`, `mul_ml_result`, and `final_verify : MlResult → MlResult → Bool`.
+
+**The limitation that matters.** Plutus exposes the pairing only as an _equality oracle_. You can check `e(A,B) == e(C,D)` via `final_verify`, but you cannot obtain the GT field element value of `e(A,B)`. This is fine for BLS signature verification but a problem for IBE decryption.
+
+**Why it matters for `tlock`.** Drand's tlock is Boneh–Franklin IBE on BLS12-381. Decryption with the round signature `σ_R` looks like
+
+```
+M = V ⊕ H'( e(σ_R, U) )
+```
+
+where `H'` is a KDF over the GT element. _Computing the mask requires the GT element value_, which Plutus cannot return. There is no clever rearrangement that lets `final_verify` rescue this: the KDF input is the pairing output itself, not an equation between pairings.
+
+**Consequence for validator design.**
+
+| Goal                                                                                               | Feasible in Aiken today?                                                                          |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Voters submit time-locked ballots; tally is computed off-chain after the Drand round               | **Yes**, trivially — the validator just stores ciphertexts as datums; no BLS ops needed on-chain. |
+| Hash-commit on-chain with tlock as a forced-reveal backup                                          | **Yes** — Aiken verifies a cheap Blake2b hash on reveal; tlock handles silent voters off-chain.   |
+| Validator verifies on-chain that a revealed plaintext is the genuine tlock decryption of its datum | **No** — requires extracting the GT element to recompute the KDF, which Plutus does not expose.   |
+| Use Drand beacons that are not on BLS12-381 (e.g. the legacy BN254 default beacon)                 | **No** — wrong curve; Plutus has no BN254 builtins. Must target a BLS12-381 beacon (quicknet).    |
+
+The crucial observation is that **on-chain validation of decryption is not needed** for an election whose tally is off-chain anyway. The forced-reveal property comes from the cryptography, not from the validator: once Drand publishes `σ_R`, every ciphertext targeted at round `R` is decryptable by anyone (auditors included), and the voter has no opportunity to back out. The validator's only job is to make sure each eligible voter submitted exactly one ciphertext during the commit window.
+
+**Recommended pattern.** Combine a Blake2b hash commitment with a tlock ciphertext for the same `(ballot, salt)` pair:
+
+- _Happy path_: the voter reveals `(ballot, salt)` on-chain after the deadline; Aiken verifies the hash. Cheap, no BLS work on-chain.
+- _Sad path_: the voter goes silent; the off-chain tallier decrypts the tlock ciphertext using `σ_R` and audits that it matches the hash. Forced reveal is guaranteed cryptographically; the validator never needs to verify decryption.
+
+**Practical details that must line up.** Even in the off-chain-tally model, several Drand-specific parameters have to match or the system breaks:
+
+1. **Curve.** Target a BLS12-381 beacon (Drand's `quicknet` is current). The legacy default beacon is BN254 and is unusable on Cardano.
+2. **Group placement.** `quicknet` uses signatures on G1 and public key on G2; tlock places the round identity `H(round)` on G1 and `U = g₂^r` on G2. Plutus supports `hash_to_group` on both groups, so this is fine.
+3. **Hash-to-curve DST.** Plutus's `hash_to_group` follows RFC 9380 with a caller-supplied DST. The DST passed when reconstructing a round identity off-chain (and any time the validator touches `hash_to_group`) must exactly match Drand's per-network DST (e.g. `BLS_SIG_BLS12381G1_XMD:SHA-256_SSWU_RO_NUL_` for quicknet). Easy to get wrong, easy to test.
+4. **Serialization.** Drand publishes compressed group elements (48 bytes G1, 96 bytes G2); Plutus has `uncompress`. Comfortably within transaction limits.
+5. **Round timing.** Drand `quicknet` produces a beacon every 3 seconds since genesis. Pick `R = (deadline_unix − genesis) / period`. Cardano slots and Drand rounds are independent — the deadline is wall-clock-based.
+6. **Beacon availability.** If the League of Entropy fails to publish `σ_R`, ciphertexts for that round cannot be decrypted and the election cannot be tallied. Mitigations: keep the target round close, optionally encrypt to a chain of consecutive rounds, and retain the hash-commit path so honest voters can still reveal manually.
+7. **Trust assumption.** tlock's confidentiality before round `R` depends on the LoE threshold (currently ~9 nodes, threshold 6). Early collusion implies early decryption. Worth disclosing to voters; not a flaw, but not "cryptographically unconditional" either.
+8. **Griefing via malformed ciphertexts.** A voter can post bytes that do not decrypt to a valid ballot. The validator can cheaply enforce well-formedness (call `uncompress` on the ciphertext components, which includes subgroup checks) to make on-curve membership a precondition of acceptance; semantic validity of the plaintext is policed off-chain by the tally rule.
+9. **Costs.** Per ciphertext on-chain: zero pairings, at most a few `uncompress` calls. Per-voter datum: roughly 150–250 bytes. Comfortable within Cardano execution budgets.
+
+**Verdict.** Drand-based timelock voting is genuinely feasible on Aiken **for the off-chain-tally model an election needs**. It is _not_ feasible to have a validator decide on-chain whether a particular reveal is the honest tlock decryption of its commitment — that would require a GT-element extraction primitive Plutus does not provide. For single-winner elections this is not a real limitation; the cryptographic forced-reveal property holds regardless, and the off-chain tallier (along with any auditor) can verify decryptions independently.
 
 ---
 
