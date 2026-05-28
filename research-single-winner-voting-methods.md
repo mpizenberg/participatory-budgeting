@@ -289,6 +289,17 @@ Whether ballots _should_ be public is a more fundamental question than which agg
 
 A useful middle ground that several systems adopt is **commit–reveal voting**: voters publish a cryptographic commitment to their ballot during the voting period; ballots are revealed only after the period closes, simultaneously. This eliminates bandwagon, last-mover advantage, and most cascade effects while preserving end-state auditability. It does **not** solve coercion or vote-buying if reveals are linkable to identity — those still require ballot secrecy or coercion-resistant cryptography. If the design constraint is "tally must be publicly auditable" rather than "ballots must be publicly visible during voting," commit–reveal captures the auditability benefit without the strategic-game and cascade costs.
 
+### 6.5 Commit–reveal on Cardano, and the forced-reveal problem
+
+The commit phase is straightforward in Plutus/Aiken: the commit datum stores `H(ballot || nonce)`, the reveal transaction supplies the preimage, and the validator checks the hash using cheap built-in primitives (Blake2b, SHA-256, Keccak). The harder problem is **forced reveal** — preventing voters from selectively withholding their reveal once they observe how other reveals are trending, which would reintroduce the very last-mover advantage commit–reveal is meant to eliminate. Cardano-feasible mitigations, ordered by strength:
+
+- **Bond / slashing** (weak). Collateral locked at commit time is forfeited (burned or sent to a treasury) on non-reveal. Discourages but does not prevent selective abstention — a sufficiently motivated voter can pay the bond.
+- **Default-ballot via relayer** (medium). After the reveal window, any third party can submit a transaction that defaults an unrevealed commit to a null ballot, incentivized by a bounty paid from the forfeited bond. Non-reveal becomes equivalent to casting the default ballot. The voter still has a tactical choice between "my committed vote" and "the default," but the full last-mover advantage is removed.
+- **Threshold encryption with a trustee committee** (strong). Ballots are encrypted to a t-of-n public key held by trustees (DReps, SPOs, or a dedicated election committee). After the voting window closes, trustees publish their decryption shares and anyone reconstructs the plaintext ballots. Voters do not control reveal. Requires an honest threshold of trustees and an off-chain coordination protocol; the chain holds the ciphertexts and verifies the shares.
+- **Timelock encryption (Drand `tlock`)** (strongest). Ballots are encrypted under a Drand "League of Entropy" public key whose decryption material is broadcast at a specific future round. After that round anyone can decrypt; before it, no one can. The voter has no reveal-time choice — decryption is a function of time, not voter action — and no trustee committee is required beyond Drand itself. The chain stores ciphertexts as datums and verifies decrypted plaintexts against the Drand-derived key.
+
+For genuinely forced reveal, **Drand timelock encryption is the cleanest option available today** and is the recommended primary mechanism on Cardano, with classic commit–reveal retained as a recoverable fallback in case of beacon outage. Threshold encryption with a trustee committee is the next-best alternative and avoids the external dependency on Drand, at the cost of a governance question about trustee selection.
+
 ---
 
 ## Sources
