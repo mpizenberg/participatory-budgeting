@@ -321,16 +321,18 @@ where `H'` is a KDF over the GT element. _Computing the mask requires the GT ele
 | Goal                                                                                               | Feasible in Aiken today?                                                                          |
 | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | Voters submit time-locked ballots; tally is computed off-chain after the Drand round               | **Yes**, trivially — the validator just stores ciphertexts as datums; no BLS ops needed on-chain. |
-| Hash-commit on-chain with tlock as a forced-reveal backup                                          | **Yes** — Aiken verifies a cheap Blake2b hash on reveal; tlock handles silent voters off-chain.   |
+| Hash-commit on-chain with tlock as the canonical forced reveal                                     | **Yes** — Aiken verifies a cheap Blake2b hash on optional reveal; tlock is decrypted off-chain for every voter as the source of truth. |
 | Validator verifies on-chain that a revealed plaintext is the genuine tlock decryption of its datum | **No** — requires extracting the GT element to recompute the KDF, which Plutus does not expose.   |
 | Use Drand beacons that are not on BLS12-381 (e.g. the legacy BN254 default beacon)                 | **No** — wrong curve; Plutus has no BN254 builtins. Must target a BLS12-381 beacon (quicknet).    |
 
 The crucial observation is that **on-chain validation of decryption is not needed** for an election whose tally is off-chain anyway. The forced-reveal property comes from the cryptography, not from the validator: once Drand publishes `σ_R`, every ciphertext targeted at round `R` is decryptable by anyone (auditors included), and the voter has no opportunity to back out. The validator's only job is to make sure each eligible voter submitted exactly one ciphertext during the commit window.
 
-**Recommended pattern.** Combine a Blake2b hash commitment with a tlock ciphertext for the same `(ballot, salt)` pair:
+**Recommended pattern.** Combine a Blake2b hash commitment with a tlock ciphertext for the same `(ballot, salt)` pair — but make the **tlock decryption the single canonical ballot, decrypted for every voter**:
 
-- _Happy path_: the voter reveals `(ballot, salt)` on-chain after the deadline; Aiken verifies the hash. Cheap, no BLS work on-chain.
-- _Sad path_: the voter goes silent; the off-chain tallier decrypts the tlock ciphertext using `σ_R` and audits that it matches the hash. Forced reveal is guaranteed cryptographically; the validator never needs to verify decryption.
+- _Canonical tally (always)_: after round `R`, the off-chain tallier decrypts the tlock ciphertext of **every** commit using `σ_R`, checks `blake2b(decryption) == h`, and counts the decrypted ballot. The validator never needs to verify decryption.
+- _On-chain reveal (optional)_: a cooperative voter may reveal `(ballot, salt)` on-chain after the deadline; Aiken verifies the hash (cheap, no BLS). This is an availability/integrity convenience only — it must match the tlock decryption and **cannot override it**.
+
+**Why the tlock must be canonical for everyone — the equivocation attack.** A tempting variant decrypts the tlock *only* for voters who fail to reveal on-chain ("happy path: use the on-chain reveal; sad path: decrypt the silent voters"). This is **insecure**: a voter can commit ballot A under the hash and a *different* ballot B under the tlock, then, after watching how reveals trend, either reveal A (A counts) or stay silent (B is decrypted and counts). That post-deadline choice between two pre-committed ballots is exactly the last-mover advantage commit–reveal exists to remove. Decrypting every ciphertext and treating that value as authoritative removes the choice — the voter has one canonical ballot, fixed at commit time. The cost (decrypting all ciphertexts rather than a subset) is negligible off-chain, and an IBE ciphertext is itself a binding commitment to its plaintext, so the tlock alone already binds the vote; the hash is retained for beacon-outage recovery and early on-chain availability, not for binding.
 
 **Practical details that must line up.** Even in the off-chain-tally model, several Drand-specific parameters have to match or the system breaks:
 
